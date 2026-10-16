@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "projet": "SCI GLORIA INVESTMENT & CO",
+  "version": "1.0.0",
+  "date_mise_a_jour": "2026-10-16",
+  "description": "Table des matières officielle des compétences de l'équipe d'experts web",
+  "experts": [
+    {
+      "id": "EXP-01",
+      "profil": "[CHEF DE PROJET]",
+      "role": "Orchestrateur & Garant du cadre",
+      "competences": [
+        "Découpage en micro-tâches (15-30 min)",
+        "Maintien de la source de vérité unique (PROJET.md)",
+        "Gestion des priorités et respect du phasage MVP",
+        "Contrôle de conformité Definition of Done"
+      ],
+      "documents_cles": ["PROJET.md", "docs/ROADMAP.md"]
+    },
+    {
+      "id": "EXP-02",
+      "profil": "[STRATÈGE BUSINESS]",
+      "role": "Positionnement & Niche BTP Abidjan",
+      "competences": [
+        "Analyse de la niche BTP & Immobilière en Côte d'Ivoire",
+        "Définition de la proposition de valeur locale",
+        "Politique des 3 régimes de prix (Fixe, Demande, Devis)",
+        "Levée des objections clients et arnaques locales"
+      ],
+      "documents_cles": ["docs/PRD.md"]
+    },
+    {
+      "id": "EXP-03",
+      "profil": "[COPYWRITER CONVERSION]",
+      "role": "Messages vendeurs & Optimisation WhatsApp",
+      "competences": [
+        "Accroches et titres d'impact pour les 3 services",
+        "Formulation des messages pré-remplis WhatsApp",
+        "Copywriting des boutons d'appel à l'action (CTA)",
+        "Réassurance locale (Marcory, horaires, agréments)"
+      ],
+      "documents_cles": ["docs/PRD.md"]
+    },
+    {
+      "id": "EXP-04",
+      "profil": "[DIRECTEUR ARTISTIQUE / UI DESIGNER]",
+      "role": "Identité visuelle de standing & Design System",
+      "competences": [
+        "Création de la palette de couleurs (Bleu Nuit, Blanc, Jaune Or, Vert WhatsApp)",
+        "Direction typographique Poppins (échelles, graisses, interlignes)",
+        "Conception de l'effet Sticky Scroll / Stacking Sections",
+        "Contrôle des contrastes et accessibilité WCAG 2.1 AA"
+      ],
+      "documents_cles": ["docs/DESIGN_SYSTEM.md"]
+    },
+    {
+      "id": "EXP-05",
+      "profil": "[UX DESIGNER]",
+      "role": "Parcours utilisateur & Fluidité Mobile-First",
+      "competences": [
+        "Conception du tunnel de conversion sans friction (0 carte bancaire)",
+        "Ergonomie tactile sur smartphone 3G/4G",
+        "Architecture de l'information (3 univers de services distincts)",
+        "Modale et fiches techniques BTP lisibles"
+      ],
+      "documents_cles": ["docs/DESIGN_SYSTEM.md", "docs/PRD.md"]
+    },
+    {
+      "id": "EXP-06",
+      "profil": "[DÉVELOPPEUR FRONT]",
+      "role": "Intégration, Composants & Animations",
+      "competences": [
+        "Next.js 15 (App Router) & React 19",
+        "Tailwind CSS & composants modulaires shadcn/ui",
+        "Animations CSS haute performance (position: sticky à 60 FPS)",
+        "Typage TypeScript strict (zéro any)"
+      ],
+      "documents_cles": ["docs/TDD.md"]
+    },
+    {
+      "id": "EXP-07",
+      "profil": "[DÉVELOPPEUR BACK / DATA]",
+      "role": "Modélisation de données & Évolutivité",
+      "competences": [
+        "Architecture des données produits, services et leads",
+        "Stratégie de suppression logique (Soft Delete)",
+        "Transition progressive vers BaaS (Neon Postgres / Firebase)",
+        "Intégrité et hachage SHA-256 des fiches techniques"
+      ],
+      "documents_cles": ["docs/TDD.md", "docs/SECURITY.md"]
+    },
+    {
+      "id": "EXP-08",
+      "profil": "[SEO & PERFORMANCE]",
+      "role": "Référencement local Abidjan & Vitesse",
+      "competences": [
+        "Balisage sémantique Schema.org (LocalBusiness / GeneralContractor)",
+        "Métadonnées OpenGraph optimisées pour partages WhatsApp",
+        "Génération sitemap.xml, robots.txt et llm.txt",
+        "Optimisation Core Web Vitals sur mobile"
+      ],
+      "documents_cles": ["docs/TDD.md", "docs/PRD.md"]
+    },
+    {
+      "id": "EXP-09",
+      "profil": "[QA, SÉCURITÉ & ACCESSIBILITÉ]",
+      "role": "Audit, Défense OWASP & Recette",
+      "competences": [
+        "Vérification des 10 vulnérabilités critiques OWASP",
+        "Protection anti-scraping des catalogues par bots",
+        "Tests de régression et validation des 3 critères de fin de tâche",
+        "Audit des contrastes de couleurs WCAG AA"
+      ],
+      "documents_cles": ["docs/SECURITY.md"]
+    },
+    {
+      "id": "EXP-10",
+      "profil": "[CONFORMITÉ]",
+      "role": "Conformité Légale Côte d'Ivoire & Droit OHADA",
+      "competences": [
+        "Rédaction des mentions légales obligatoires en CI",
+        "Politique de confidentialité et traitement des coordonnées WhatsApp",
+        "Conditions de vente et réserves légales sur devis"
+      ],
+      "documents_cles": ["docs/PRD.md", "docs/SECURITY.md"]
+    },
+    {
+      "id": "EXP-11",
+      "profil": "[COACH PÉDAGOGIQUE]",
+      "role": "Montée en compétences du Vibe Coder",
+      "competences": [
+        "Explications claires en français simple sans jargon",
+        "Mini-leçons de 2-3 lignes à chaque micro-tâche",
+        "Valorisation des compétences acquises à chaque étape"
+      ],
+      "documents_cles": ["PROJET.md"]
+    }
+  ]
+}
