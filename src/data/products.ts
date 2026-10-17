@@ -1,7 +1,7 @@
 import { Product } from "@/types";
 
 export const initialProducts: Product[] = [
-  // --- PÔLE 1 : CONSTRUCTION & BRIQUES ---
+  // --- PÔLE 1 : CONSTRUCTION & BRIQUES (2 articles) ---
   {
     id: "prod-001",
     slug: "brique-creuse-15cm-standard",
@@ -61,33 +61,8 @@ export const initialProducts: Product[] = [
     featured: true,
     createdAt: "2026-10-16",
   },
-  {
-    id: "prod-003",
-    slug: "brique-chainage-u-15cm",
-    name: "Brique de Chaînage en U 15 cm",
-    category: "construction",
-    subCategory: "Briques",
-    shortDescription: "Brique profilée en U servant de coffrage perdu pour linteaux et poutres.",
-    fullDescription:
-      "Permet de couler les chaînages horizontaux et linteaux sans recourir à un coffrage bois fastidieux. Gain de temps considérable sur les chantiers et finition irréprochable.",
-    specs: [
-      { label: "Dimensions", value: "15 x 20 x 40 cm (Profilé en U)" },
-      { label: "Évidement intérieur", value: "Largeur 9 cm, Profondeur 13 cm" },
-      { label: "Conditionnement", value: "Vrac ou palette" },
-      { label: "Utilisation", value: "Linteaux de portes/fenêtres, chaînages hauts" },
-    ],
-    priceType: "fixed",
-    priceFcfa: 500,
-    priceUnit: "l'unité",
-    inStock: true,
-    stockStatus: "in_stock",
-    badge: "Gain de temps BTP",
-    images: ["/images/products/brique-chainage.jpg"],
-    featured: false,
-    createdAt: "2026-10-16",
-  },
 
-  // --- PÔLE 2 : GESTION IMMOBILIÈRE & TERRAINS ---
+  // --- PÔLE 2 : GESTION IMMOBILIÈRE & TERRAINS (2 articles) ---
   {
     id: "prod-004",
     slug: "terrain-500m2-titre-acd-zone-residentielle",
@@ -142,7 +117,97 @@ export const initialProducts: Product[] = [
     createdAt: "2026-10-16",
   },
 
-  // --- PÔLE 3 : MATÉRIAUX & OUTILLAGE (MARCORY) ---
+  // --- PÔLE 3 : MATÉRIAUX & OUTILLAGE (2 articles) ---
+  {
+    id: "prod-009",
+    slug: "carrelage-gres-cerame-60x60-effet-marbre",
+    name: "Carrelage Grès Cérame 60x60 cm — Effet Marbre Rectifié",
+    category: "materiaux",
+    subCategory: "Carrelage",
+    shortDescription: "Carreaux grand format poli miroir haute résistance pour sols et murs intérieurs.",
+    fullDescription:
+      "Sélection haut de gamme pour résidences et commerces. Surface vitrifiée effet marbre avec veinage naturel raffiné. Bords rectifiés au laser permettant des joints ultra-fins de 1.5 mm pour une finition contemporaine spectaculaire.",
+    specs: [
+      { label: "Dimensions", value: "60 x 60 cm (Épaisseur 9.5 mm)" },
+      { label: "Matière", value: "Grès cérame émaillé pleine masse" },
+      { label: "Finition", value: "Poli brillant miroir haute réflexion" },
+      { label: "Bords", value: "Rectifiés (pose à joints fins)" },
+      { label: "Résistance à l'usure", value: "Classe PEI IV (fort trafic résidentiel/commercial)" },
+      { label: "Conditionnement", value: "Carton de 4 carreaux (1.44 m²)" },
+      { label: "Origine", value: "Importation Espagne / Italie" },
+    ],
+    priceType: "fixed",
+    priceFcfa: 12500,
+    priceUnit: "le m² (18 000 FCFA le carton)",
+    inStock: true,
+    stockStatus: "in_stock",
+    badge: "Nouveauté Showroom",
+    certifiedBadge: true,
+    images: [
+      "/images/products/carrelage-gres-1.jpg",
+      "/images/products/carrelage-gres-2.jpg"
+    ],
+    featured: true,
+    createdAt: "2026-10-16",
+  },
+  {
+    id: "prod-010",
+    slug: "pack-wc-suspendu-ceramique-rimless-bati-support",
+    name: "Pack WC Suspendu Céramique Rimless + Bâti-Support",
+    category: "materiaux",
+    subCategory: "Sanitaire",
+    shortDescription: "Ensemble complet cuvette sans bride suspendue, abattant frein de chute et bâti-support.",
+    fullDescription:
+      "La référence hygiène et design pour vos salles de bain modernes. Cuvette céramique sans bride (Rimless) empêchant le dépôt de calcaire et de bactéries. Livré complet avec bâti-support autoportant testé 400 kg et plaque de commande double touche chrome brillant.",
+    specs: [
+      { label: "Technologie", value: "Rimless sans bride (rinçage cyclone 100% propre)" },
+      { label: "Matière", value: "Céramique sanitaire vitrifiée blanche émaillée" },
+      { label: "Abattant", value: "Duroplast soft-close (frein de chute silencieux déclipsable)" },
+      { label: "Bâti-support", value: "Châssis acier anticorrosion autoportant (charge 400 kg)" },
+      { label: "Plaque de commande", value: "Double volume 3L / 6L chrome poli miroir" },
+      { label: "Entretien", value: "Nettoyage rapide du sol dégagé sous la cuvette" },
+      { label: "Garantie", value: "5 ans mécanisme & cuvette" },
+    ],
+    priceType: "fixed",
+    priceFcfa: 145000,
+    priceUnit: "l'ensemble complet prêt à poser",
+    inStock: true,
+    stockStatus: "in_stock",
+    badge: "Hygiène Rimless",
+    certifiedBadge: true,
+    images: [
+      "/images/products/wc-suspendu-1.jpg"
+    ],
+    featured: true,
+    createdAt: "2026-10-16",
+  },
+
+  // --- ARTICLES COMPLÉMENTAIRES (Dépliés via « Voir plus d'articles ») ---
+  {
+    id: "prod-003",
+    slug: "brique-chainage-u-15cm",
+    name: "Brique de Chaînage en U 15 cm",
+    category: "construction",
+    subCategory: "Briques",
+    shortDescription: "Brique profilée en U servant de coffrage perdu pour linteaux et poutres.",
+    fullDescription:
+      "Permet de couler les chaînages horizontaux et linteaux sans recourir à un coffrage bois fastidieux. Gain de temps considérable sur les chantiers et finition irréprochable.",
+    specs: [
+      { label: "Dimensions", value: "15 x 20 x 40 cm (Profilé en U)" },
+      { label: "Évidement intérieur", value: "Largeur 9 cm, Profondeur 13 cm" },
+      { label: "Conditionnement", value: "Vrac ou palette" },
+      { label: "Utilisation", value: "Linteaux de portes/fenêtres, chaînages hauts" },
+    ],
+    priceType: "fixed",
+    priceFcfa: 500,
+    priceUnit: "l'unité",
+    inStock: true,
+    stockStatus: "in_stock",
+    badge: "Gain de temps BTP",
+    images: ["/images/products/brique-chainage.jpg"],
+    featured: false,
+    createdAt: "2026-10-16",
+  },
   {
     id: "prod-006",
     slug: "perforateur-burineur-pro-sds-plus-850w",
@@ -216,69 +281,6 @@ export const initialProducts: Product[] = [
     stockStatus: "in_stock",
     badge: "Norme BTP",
     images: ["/images/products/fer-beton.jpg"],
-    featured: true,
-    createdAt: "2026-10-16",
-  },
-  {
-    id: "prod-009",
-    slug: "carrelage-gres-cerame-60x60-effet-marbre",
-    name: "Carrelage Grès Cérame 60x60 cm — Effet Marbre Rectifié",
-    category: "materiaux",
-    subCategory: "Carrelage",
-    shortDescription: "Carreaux grand format poli miroir haute résistance pour sols et murs intérieurs.",
-    fullDescription:
-      "Sélection haut de gamme pour résidences et commerces. Surface vitrifiée effet marbre avec veinage naturel raffiné. Bords rectifiés au laser permettant des joints ultra-fins de 1.5 mm pour une finition contemporaine spectaculaire.",
-    specs: [
-      { label: "Dimensions", value: "60 x 60 cm (Épaisseur 9.5 mm)" },
-      { label: "Matière", value: "Grès cérame émaillé pleine masse" },
-      { label: "Finition", value: "Poli brillant miroir haute réflexion" },
-      { label: "Bords", value: "Rectifiés (pose à joints fins)" },
-      { label: "Résistance à l'usure", value: "Classe PEI IV (fort trafic résidentiel/commercial)" },
-      { label: "Conditionnement", value: "Carton de 4 carreaux (1.44 m²)" },
-      { label: "Origine", value: "Importation Espagne / Italie" },
-    ],
-    priceType: "fixed",
-    priceFcfa: 12500,
-    priceUnit: "le m² (18 000 FCFA le carton)",
-    inStock: true,
-    stockStatus: "in_stock",
-    badge: "Nouveauté Showroom",
-    certifiedBadge: true,
-    images: [
-      "/images/products/carrelage-gres-1.jpg",
-      "/images/products/carrelage-gres-2.jpg"
-    ],
-    featured: true,
-    createdAt: "2026-10-16",
-  },
-  {
-    id: "prod-010",
-    slug: "pack-wc-suspendu-ceramique-rimless-bati-support",
-    name: "Pack WC Suspendu Céramique Rimless + Bâti-Support",
-    category: "materiaux",
-    subCategory: "Sanitaire",
-    shortDescription: "Ensemble complet cuvette sans bride suspendue, abattant frein de chute et bâti-support.",
-    fullDescription:
-      "La référence hygiène et design pour vos salles de bain modernes. Cuvette céramique sans bride (Rimless) empêchant le dépôt de calcaire et de bactéries. Livré complet avec bâti-support autoportant testé 400 kg et plaque de commande double touche chrome brillant.",
-    specs: [
-      { label: "Technologie", value: "Rimless sans bride (rinçage cyclone 100% propre)" },
-      { label: "Matière", value: "Céramique sanitaire vitrifiée blanche émaillée" },
-      { label: "Abattant", value: "Duroplast soft-close (frein de chute silencieux déclipsable)" },
-      { label: "Bâti-support", value: "Châssis acier anticorrosion autoportant (charge 400 kg)" },
-      { label: "Plaque de commande", value: "Double volume 3L / 6L chrome poli miroir" },
-      { label: "Entretien", value: "Nettoyage rapide du sol dégagé sous la cuvette" },
-      { label: "Garantie", value: "5 ans mécanisme & cuvette" },
-    ],
-    priceType: "fixed",
-    priceFcfa: 145000,
-    priceUnit: "l'ensemble complet prêt à poser",
-    inStock: true,
-    stockStatus: "in_stock",
-    badge: "Hygiène Rimless",
-    certifiedBadge: true,
-    images: [
-      "/images/products/wc-suspendu-1.jpg"
-    ],
     featured: true,
     createdAt: "2026-10-16",
   },

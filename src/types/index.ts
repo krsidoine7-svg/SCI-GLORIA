@@ -10,6 +10,20 @@ export interface TechnicalSpec {
   value: string; // ex: "4.5 MPa", "15x20x40 cm", "Palette de 80 unités"
 }
 
+// Sous-bloc de spécifications pour un onglet de fiche technique
+export interface SpecSubBlock {
+  title: string;
+  description: string;
+  specs: TechnicalSpec[];
+}
+
+// Onglet de spécifications techniques homologuées
+export interface DetailedSpecTab {
+  id: string;
+  label: string;
+  blocks: [SpecSubBlock, SpecSubBlock]; // 2 colonnes par onglet comme sur la maquette
+}
+
 // Modèle Produit / Article du catalogue
 export interface Product {
   id: string;
@@ -20,6 +34,7 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   specs: TechnicalSpec[];
+  detailedTabs?: DetailedSpecTab[];
   priceType: PriceType;
   priceFcfa?: number; // Défini si priceType === 'fixed'
   priceUnit?: string; // ex: "l'unité", "le sac de 50kg", "le seau de 25kg", "le lot"
@@ -52,7 +67,10 @@ export interface CompanyInfo {
   phone: string;
   whatsappPhone: string;
   whatsappDisplay: string;
+  email: string;
   hoursWeek: string;
   hoursSaturday: string;
   googleMapsUrl: string;
+  tiktok?: string;
+  tiktokHandle?: string;
 }

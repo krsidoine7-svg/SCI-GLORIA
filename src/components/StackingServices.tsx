@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 import { buildGeneralWhatsAppUrl } from "@/lib/whatsapp";
@@ -48,46 +48,56 @@ const hubVisualData = {
 };
 
 export function StackingServices() {
-  const [card3Progress, setCard3Progress] = useState(0);
   const card3TrackRef = useRef<HTMLDivElement>(null);
+  const card3ArticleRef = useRef<HTMLElement>(null);
 
-  // Synchronisation du glissement latéral de la 3e carte avec le scroll
+  // Synchronisation du scroll : 100% vertical du bas vers le haut sur mobile/tablette (< 1024px), latéral sur desktop
   useEffect(() => {
     let ticking = false;
 
-    const updateProgress = () => {
-      if (!card3TrackRef.current) return;
+    const updatePosition = () => {
+      if (!card3TrackRef.current || !card3ArticleRef.current) return;
+
+      // Sur mobile et tablette (< 1024px) : scroll 100% vertical du bas vers le haut
+      if (window.innerWidth < 1024) {
+        card3ArticleRef.current.style.transform = "none";
+        return;
+      }
+
       const rect = card3TrackRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Détection de l'accroche sticky (offset dynamique selon la hauteur d'en-tête)
-      const stickyTop = window.innerWidth < 768 ? 96 : 124;
-      const trackHeight = rect.height - windowHeight;
-
-      if (trackHeight <= 0) return;
-
-      // Distance scrollée dès que le track entre dans sa zone sticky
+      // Détection de l'accroche sticky sur desktop
+      const stickyTop = 124;
       const scrolled = stickyTop - rect.top;
-      // La carte glisse sur 75% du parcours de scroll, puis reste ancrée
-      const scrollRange = windowHeight * 0.75;
+
+      // Plage de scroll resserrée (50% de la hauteur écran sur desktop)
+      const scrollRange = windowHeight * 0.5;
       const rawProgress = scrolled / scrollRange;
       const clamped = Math.min(Math.max(rawProgress, 0), 1);
 
-      setCard3Progress(clamped);
+      // Déplacement matériel direct GPU (translate3d) sur grand écran
+      const translateX = (1 - clamped) * 102;
+      card3ArticleRef.current.style.transform = `translate3d(${translateX}%, 0, 0)`;
+
       ticking = false;
     };
 
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
+        window.requestAnimationFrame(updatePosition);
         ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    updateProgress();
+    window.addEventListener("resize", updatePosition, { passive: true });
+    updatePosition();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updatePosition);
+    };
   }, []);
 
   // Rendu modulaire d'une carte de pôle d'activité
@@ -112,7 +122,7 @@ export function StackingServices() {
               {visual.number}
             </span>
             {index === 2 && (
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-brand-gold text-brand-blue shadow-sm">
+              <span className="hidden lg:inline text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-brand-gold text-brand-blue shadow-sm">
                 Arrivée latérale
               </span>
             )}
@@ -198,27 +208,25 @@ export function StackingServices() {
           </p>
         </div>
 
-        {/* Cartes empilées hybrides : Cartes 1 & 2 en vertical + Carte 3 en glissement horizontal depuis la droite */}
+        {/* Cartes empilées : Cartes 1, 2 et 3 montent du bas vers le haut sur mobile/tablette (100% vertical). Sur desktop, la Carte 3 arrive par la droite. */}
         <div className="relative pb-16 md:pb-24">
           {/* Carte 01 : BTP & Briques (Statique en sticky vertical) */}
-          <article className="sticky top-20 md:top-24 z-10 transition-transform">
+          <article className="sticky top-20 md:top-24 z-10 will-change-transform">
             {renderCardContent(servicesData[0], 0)}
           </article>
 
           {/* Carte 02 : Immobilier & Terrains (Monte du bas vers le haut et se superpose) */}
-          <article className="sticky top-24 md:top-28 z-20 mt-8 md:mt-12 transition-transform">
+          <article className="sticky top-24 md:top-28 z-20 mt-8 md:mt-12 will-change-transform">
             {renderCardContent(servicesData[1], 1)}
           </article>
 
-          {/* Carte 03 : Matériaux & Outillage (Glisse de la droite vers la gauche par-dessus la 2e carte au scroll) */}
-          <div ref={card3TrackRef} className="relative min-h-[140vh] sm:min-h-[155vh] mt-8 md:mt-12">
+          {/* Carte 03 : Matériaux & Outillage (Monte du bas vers le haut sur mobile/tablette, glisse latéralement sur grand écran) */}
+          <div ref={card3TrackRef} className="relative lg:min-h-[115vh] mt-8 md:mt-12">
             <div className="sticky top-28 md:top-32 z-30 w-full overflow-visible">
               <article
-                style={{
-                  transform: `translateX(${(1 - card3Progress) * 105}%)`,
-                  willChange: "transform",
-                }}
-                className="transition-transform duration-75 ease-out shadow-2xl shadow-brand-blue/30 rounded-3xl"
+                ref={card3ArticleRef}
+                style={{ willChange: "transform" }}
+                className="shadow-2xl shadow-brand-blue/30 rounded-3xl"
               >
                 {renderCardContent(servicesData[2], 2)}
               </article>

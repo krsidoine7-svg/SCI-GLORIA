@@ -16,12 +16,27 @@
 * **Prix & Boutons :** Poppins Medium (500) — 16px.
 * **Corps de texte :** Poppins Regular (400) — 16px / 15px interligne `1.6`.
 
-## 3. Interaction Signature : Sticky Scroll Stacking
-* Les 3 cartes de services s'empilent au défilement façon Apple/Stripe.
-* Implémentation : `position: sticky` natif CSS, offsets calculés, ombres progressives `shadow-2xl`.
-* Zéro bibliothèque JavaScript lourde : 60 FPS garantis sur mobile.
+## 3. Interaction Signature : Scroll Stacking Hybride
+* **Cartes 01 & 02 :** S'empilent au défilement vertical façon Apple/Stripe (`sticky top-20` et `sticky top-24`).
+* **Carte 03 (Matériaux) :** Arrive par glissement horizontal **de la droite vers la gauche** (`translateX(105% → 0%)`) asservi au scroll pour venir se caler au-dessus du stack.
+* Implémentation : `position: sticky` natif CSS + calcul de scroll sans bibliothèque externe (60/120 FPS).
 
-## 4. Mascotte Officielle : Le Lion Bâtisseur
-* **Personnage :** Lion noble et chaleureux avec casque de chantier doré (`#F59E0B`).
-* **Animations :** Cycle vivant de 7s (sautillement doux, léger zoom, et coucou de la patte 👋 en rotation).
-* **Rôle :** Humaniser l'accueil, capter le regard sans agresser et inciter à l'échange WhatsApp direct.
+## 4. Écran de Chargement Immersif Corporate (`PageLoader.tsx`)
+* **Fond :** Bleu nuit profond `#070F1E` avec trame architecturale millimétrée en filigrane.
+* **Emblème :** Structure vectorielle or 24K (hexagone, fondations béton, 3 piliers d'univers BTP).
+* **Jauge :** Ligne laser dorée ultra-fine de 2px, progression 0-100% en 1,1s et fondu de sortie cinéma.
+* *Note : Zéro image d'avatar/lion sur l'écran d'accueil afin de préserver l'élégance institutionnelle.*
+
+## 5. Animation de Vague Hero (`HeroSection.tsx`)
+* Déclenchée automatiquement dès la fin du chargement initial (~1,1s).
+* Déferlement séquentiel de gauche à droite :
+  - Déploiement de la ligne de marque Marcory.
+  - Titre H1 révélé mot par mot avec décalage d'onde de 90ms.
+  - Onde liquide dorée SVG animée sous le titre.
+  - Effet de brillance lumineuse continue sur "Abidjan".
+
+## 6. Navigation Catalogue Mobile (`ProductGrid.tsx`)
+* **Sur Mobile :** Carrousel horizontal fluide tactile (`snap-x snap-mandatory`), défilement des articles de gauche à droite au doigt sans allonger la page verticalement.
+* **Bouton Fiche Dédiée :** Bouton clair *"Voir plus →"* sur chaque carte redirigeant vers `/produit/[slug]`.
+* **Sur Desktop :** Grille aérée 3 colonnes.
+

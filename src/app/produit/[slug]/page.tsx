@@ -9,6 +9,7 @@ import { PriceTag } from "@/components/PriceTag";
 import { ProductActions } from "@/components/ProductActions";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
+import { TechnicalSpecsTabs } from "@/components/TechnicalSpecsTabs";
 import { initialProducts } from "@/data/products";
 import { companyData } from "@/data/company";
 
@@ -58,7 +59,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <section className="bg-brand-blue text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-14 md:pb-20">
             <Link
-              href="/#catalogue"
+              href="/catalogue"
               className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-10"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -104,17 +105,23 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
               <ProductGallery images={product.images} name={product.name} productId={product.id} />
 
               <h2 className="text-xl font-semibold text-brand-blue mb-4">Description</h2>
-              <p className="text-base text-brand-muted leading-relaxed mb-12">{product.fullDescription}</p>
+              <p className="text-base text-brand-muted leading-relaxed mb-6">{product.fullDescription}</p>
 
-              <h2 className="text-xl font-semibold text-brand-blue mb-4">Fiche technique</h2>
-              <dl className="divide-y divide-brand-border border-y border-brand-border">
-                {product.specs.map((spec, i) => (
-                  <div key={i} className="grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-6 py-4 text-sm">
-                    <dt className="text-brand-muted">{spec.label}</dt>
-                    <dd className="sm:col-span-2 font-medium text-brand-blue">{spec.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              {/* Raccourci vers les spécifications complètes */}
+              <div className="p-4 rounded-2xl bg-brand-surface border border-brand-border/70 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-brand-gold" />
+                  <span className="text-xs sm:text-sm font-medium text-brand-blue">
+                    Fiche technique homologuée & contrôles de résistance disponibles ci-dessous
+                  </span>
+                </div>
+                <a
+                  href="#specifications-homologuees"
+                  className="text-xs font-bold text-brand-blue hover:text-brand-gold underline underline-offset-4 flex-shrink-0"
+                >
+                  Voir les spécifications
+                </a>
+              </div>
             </div>
 
             {/* Encart prix et actions */}
@@ -148,6 +155,11 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
                 </p>
               </div>
             </aside>
+          </div>
+
+          {/* Section Fiche Technique Homologuée avec Onglets en Pleine Largeur */}
+          <div id="specifications-homologuees" className="max-w-7xl mx-auto scroll-mt-24">
+            <TechnicalSpecsTabs product={product} />
           </div>
         </section>
 

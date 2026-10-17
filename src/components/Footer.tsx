@@ -3,6 +3,7 @@ import {
   MapPin,
   Clock,
   Phone,
+  Mail,
   MessageCircle,
   ArrowUpRight,
   ChevronRight,
@@ -49,6 +50,30 @@ export function Footer() {
                 Société immatriculée au RCCM d'Abidjan
               </span>
             </div>
+
+            {/* Réseau Social Officiel TikTok */}
+            {companyData.tiktok && (
+              <div className="pt-1">
+                <a
+                  href={companyData.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/50 text-xs text-slate-200 transition-all group"
+                  title="Suivez nos chantiers et réalisations sur TikTok"
+                >
+                  <div className="w-6 h-6 rounded-lg bg-black/70 flex items-center justify-center text-white group-hover:text-brand-gold transition-colors">
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] uppercase tracking-wider text-slate-400">Rejoignez-nous sur TikTok</span>
+                    <span className="text-xs font-semibold text-white group-hover:text-brand-gold transition-colors">{companyData.tiktokHandle}</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Colonne 2 : Navigation dans les 3 Pôles (Col 5-7) */}
@@ -96,7 +121,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#catalogue"
+                  href="/catalogue"
                   className="group flex items-center justify-between py-1 text-brand-gold/90 hover:text-brand-gold font-medium transition-colors"
                 >
                   <span className="group-hover:translate-x-1 transition-transform">
@@ -141,14 +166,26 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="pt-1 border-t border-white/5">
-                <a
-                  href={`tel:${companyData.phone}`}
-                  className="inline-flex items-center gap-2 text-brand-gold font-semibold hover:text-white transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>{companyData.whatsappDisplay}</span>
-                </a>
+              <div className="pt-1 border-t border-white/5 space-y-2">
+                <div>
+                  <a
+                    href={`tel:${companyData.phone}`}
+                    className="inline-flex items-center gap-2 text-brand-gold font-semibold hover:text-white transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>{companyData.whatsappDisplay}</span>
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href={`mailto:${companyData.email}`}
+                    className="inline-flex items-center gap-2 text-slate-300 hover:text-brand-gold transition-colors text-xs"
+                    title="Envoyer un e-mail"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
+                    <span className="truncate">{companyData.email}</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -174,7 +211,7 @@ export function Footer() {
                 className="w-full inline-flex items-center justify-center gap-2.5 bg-brand-whatsapp text-white font-medium text-xs py-3 px-4 rounded-xl shadow-md hover:bg-emerald-600 transition-all text-center group cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 transition-transform group-hover:scale-110" />
-                <span>Ouvrir WhatsApp Business</span>
+                <span>Contactez-nous sur WhatsApp</span>
               </a>
 
               <p className="text-[10px] text-center text-slate-400">

@@ -62,7 +62,7 @@ export function ProductCard({ product }: { product: Product }) {
   const currentImage = images[currentImageIndex] || images[0];
 
   return (
-    <article className="group bg-white border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-blue hover:shadow-card transition-all">
+    <article className="group bg-white border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-300 hover:shadow-md transition-all outline-none focus:outline-none focus:ring-0">
       {/* Conteneur photo avec défilement gauche/droite et swipe tactile */}
       <div
         className="relative h-52 w-full overflow-hidden bg-slate-100 border-b border-brand-border select-none"

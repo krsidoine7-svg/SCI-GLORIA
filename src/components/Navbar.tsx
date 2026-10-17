@@ -60,12 +60,9 @@ export function Navbar() {
       {/* 2. Barre principale de navigation */}
       <nav className="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
         {/* Logo SCI GLORIA */}
-        <a href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-brand-gold font-bold text-xl shadow-md border border-brand-blueLight transition-transform">
-            SG
-          </div>
+        <a href="/" className="flex items-center group">
           <div>
-            <span className="font-bold text-lg text-brand-blue tracking-tight block leading-tight">
+            <span className="font-bold text-lg text-brand-blue tracking-tight block leading-tight group-hover:text-brand-gold transition-colors">
               SCI GLORIA
             </span>
             <span className="text-[10px] uppercase tracking-widest text-brand-gold font-semibold block">
@@ -141,7 +138,7 @@ export function Navbar() {
             )}
           </div>
 
-          <a href="/#catalogue" className="hover:text-brand-blue transition-colors">
+          <a href="/catalogue" className="hover:text-brand-blue transition-colors">
             Catalogue BTP
           </a>
           <a href="/#calculateur" className="hover:text-brand-blue transition-colors text-brand-gold font-semibold">
@@ -208,7 +205,7 @@ export function Navbar() {
             <FavoritesButton mobile />
             <CartButton mobile />
             <a
-              href="/#catalogue"
+              href="/catalogue"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-2 text-sm font-medium text-brand-blue hover:text-brand-gold"
             >
@@ -244,7 +241,7 @@ export function Navbar() {
             className="w-full inline-flex items-center justify-center gap-2 bg-brand-whatsapp text-white font-medium text-sm py-3 px-4 rounded-xl shadow-md hover:bg-emerald-600 transition-all"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Échanger sur WhatsApp ({companyData.whatsappDisplay})</span>
+            <span>Contactez-nous ({companyData.whatsappDisplay})</span>
           </a>
         </div>
       )}

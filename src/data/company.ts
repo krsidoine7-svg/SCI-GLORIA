@@ -8,7 +8,10 @@ export const companyData: CompanyInfo = {
   phone: "+2250707830410",
   whatsappPhone: "2250707830410",
   whatsappDisplay: "+225 07 07 83 04 10",
+  email: "contact@scigloria.ci",
   hoursWeek: "Lundi au Vendredi : 08h00 - 17h00",
   hoursSaturday: "Samedi : 08h00 - 12h30",
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Pharmacie+Tiaco+Marcory+Abidjan",
+  tiktok: "https://www.tiktok.com/@sci.gloria.invest",
+  tiktokHandle: "@sci.gloria.invest",
 };

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Clock, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Clock, Phone, Mail, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
@@ -61,6 +61,17 @@ export default function ContactPage() {
                     <dd>
                       <a href={`tel:${companyData.phone}`} className="text-brand-blue font-medium hover:text-brand-gold">
                         {companyData.whatsappDisplay}
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+                <div className="flex gap-4 py-5">
+                  <Mail className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
+                  <div>
+                    <dt className="text-sm text-brand-muted mb-1">Adresse e-mail</dt>
+                    <dd>
+                      <a href={`mailto:${companyData.email}`} className="text-brand-blue font-medium hover:text-brand-gold">
+                        {companyData.email}
                       </a>
                     </dd>
                   </div>

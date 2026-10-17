@@ -1,55 +1,75 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export function PageLoader() {
+  const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(true); // Défaut à true pour ne jamais bloquer
 
   useEffect(() => {
-    // Évolution fluide et rythmée de la barre de progression (total ~1.1s)
+    // Le loader d'accueil ne s'affiche QUE sur la page d'accueil "/" et une seule fois par session
+    if (pathname !== "/") {
+      setIsDone(true);
+      return;
+    }
+
+    try {
+      if (sessionStorage.getItem("scigloria_seen_loader")) {
+        setIsDone(true);
+        return;
+      }
+    } catch {
+      // ignore
+    }
+
+    // Première visite sur la page d'accueil : on affiche l'animation élégante
+    setIsDone(false);
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        // Accélération fluide puis stabilisation élégante à 100%
-        const step = prev < 50 ? Math.floor(Math.random() * 12) + 8 : Math.floor(Math.random() * 8) + 4;
+        const step = prev < 50 ? 15 : 10;
         return Math.min(prev + step, 100);
       });
     }, 45);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
-    if (progress >= 100) {
-      // Pause de 200ms à 100% pour confirmer la fin de chargement
+    if (progress >= 100 && !isDone) {
       const timerFade = setTimeout(() => {
         setIsFading(true);
-      }, 200);
+      }, 150);
 
-      // Disparition complète du DOM après la transition de fondu
       const timerDone = setTimeout(() => {
         setIsDone(true);
-      }, 850);
+        try {
+          sessionStorage.setItem("scigloria_seen_loader", "true");
+        } catch {
+          // ignore
+        }
+      }, 650);
 
       return () => {
         clearTimeout(timerFade);
         clearTimeout(timerDone);
       };
     }
-  }, [progress]);
+  }, [progress, isDone]);
 
   if (isDone) return null;
 
-  // Messages d'état discrets et professionnels
   const statusMessage =
-    progress < 35
+    progress < 40
       ? "Connexion aux serveurs SCI GLORIA..."
-      : progress < 75
+      : progress < 80
       ? "Chargement du catalogue & des cotations BTP..."
       : "Ouverture de la plateforme...";
 
@@ -65,7 +85,7 @@ export function PageLoader() {
       <div className="absolute w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute w-[300px] h-[300px] bg-brand-blueLight/20 rounded-full blur-[80px] pointer-events-none" />
 
-      {/* Trame architecturale de précision en filigrane */}
+      {/* Trame architecturale */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -78,7 +98,7 @@ export function PageLoader() {
       <div className="relative z-10 flex flex-col items-center px-6 max-w-sm text-center">
         {/* Emblème Architectural Vectoriel 24K Gold */}
         <div className="relative mb-7">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-brand-gold/30 p-4 backdrop-blur-md shadow-2xl flex items-center justify-center transition-transform hover:scale-105">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-brand-gold/30 p-4 backdrop-blur-md shadow-2xl flex items-center justify-center">
             <svg
               className="w-full h-full"
               viewBox="0 0 100 100"
@@ -93,7 +113,6 @@ export function PageLoader() {
                 </linearGradient>
               </defs>
 
-              {/* Hexagone de structure architecturale */}
               <polygon
                 points="50,8 88,28 88,72 50,92 12,72 12,28"
                 stroke="url(#loaderGoldGrad)"
@@ -101,7 +120,6 @@ export function PageLoader() {
                 opacity="0.45"
               />
 
-              {/* Fronton / Toit géométrique */}
               <path
                 d="M26 36 L50 20 L74 36"
                 stroke="url(#loaderGoldGrad)"
@@ -110,12 +128,10 @@ export function PageLoader() {
                 strokeLinejoin="round"
               />
 
-              {/* 3 Colonnes architecturales (Pôles Construction, Immobilier, Matériaux) */}
               <path d="M34 68 V42" stroke="url(#loaderGoldGrad)" strokeWidth="3" strokeLinecap="round" />
               <path d="M50 68 V32" stroke="url(#loaderGoldGrad)" strokeWidth="3.5" strokeLinecap="round" />
               <path d="M66 68 V42" stroke="url(#loaderGoldGrad)" strokeWidth="3" strokeLinecap="round" />
 
-              {/* Socle de fondation en béton armé */}
               <line
                 x1="24"
                 y1="70"
@@ -127,12 +143,9 @@ export function PageLoader() {
               />
             </svg>
           </div>
-
-          {/* Micro-anneau de pulsation subtil */}
           <div className="absolute -inset-1 rounded-2xl border border-brand-gold/15 animate-ping opacity-30 pointer-events-none" />
         </div>
 
-        {/* Typographie Haute Horlogerie & BTP Corporate */}
         <h1 className="text-xl sm:text-2xl font-bold tracking-[0.25em] text-white">
           SCI GLORIA
         </h1>
@@ -140,7 +153,6 @@ export function PageLoader() {
           INVESTMENT &amp; CO
         </p>
 
-        {/* Ligne séparatrice et pôle d'activité */}
         <div className="flex items-center gap-3 my-5 w-full justify-center opacity-70">
           <span className="w-8 h-px bg-gradient-to-r from-transparent to-white/30" />
           <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-gray-300 font-medium">
@@ -157,7 +169,6 @@ export function PageLoader() {
           />
         </div>
 
-        {/* Indicateur chiffré & état textuel épuré */}
         <div className="flex items-center justify-between w-56 sm:w-64 text-[11px] text-gray-400 font-mono">
           <span className="text-left text-gray-400 truncate pr-2 text-[10px] font-sans tracking-wide">
             {statusMessage}

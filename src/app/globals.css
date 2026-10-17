@@ -11,6 +11,15 @@ html {
   font-family: var(--font-poppins);
   max-width: 100%;
   overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus-visible {
+  outline: none;
 }
 
 body {

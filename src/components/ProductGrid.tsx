@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, X, SlidersHorizontal } from "lucide-react";
+import { Search, X } from "lucide-react";
 import type { ServiceCategory } from "@/types";
 import { initialProducts } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
@@ -15,7 +15,11 @@ const filters: { id: Filter; label: string }[] = [
   { id: "materiaux", label: "Matériaux & outillage" },
 ];
 
-export function ProductGrid() {
+interface ProductGridProps {
+  isDedicatedPage?: boolean;
+}
+
+export function ProductGrid({ isDedicatedPage = false }: ProductGridProps = {}) {
   const [active, setActive] = useState<Filter>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -42,6 +46,14 @@ export function ProductGrid() {
       return nameMatch || subCatMatch || descMatch || badgeMatch || specMatch;
     });
   }, [active, searchQuery]);
+
+  // Si page dédiée /catalogue ou recherche active : affiche tous les résultats. Sur l'accueil : les 6 premiers.
+  const displayedProducts = useMemo(() => {
+    if (isDedicatedPage || searchQuery) {
+      return filteredProducts;
+    }
+    return filteredProducts.slice(0, 6);
+  }, [filteredProducts, searchQuery, isDedicatedPage]);
 
   return (
     <section id="catalogue" className="py-20 md:py-28 px-4 sm:px-6 bg-brand-surface scroll-mt-24">
@@ -138,12 +150,12 @@ export function ProductGrid() {
                   <span className="text-brand-gold font-bold">→</span>
                 </span>
                 <span className="text-[11px] font-semibold text-brand-blue bg-white px-2 py-0.5 rounded-full border border-brand-border">
-                  {filteredProducts.length} articles
+                  {displayedProducts.length} articles affichés
                 </span>
               </div>
 
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 pt-1 -mx-4 px-4 scroll-smooth">
-                {filteredProducts.map((product) => (
+                {displayedProducts.map((product) => (
                   <div
                     key={product.id}
                     className="w-[84vw] max-w-[340px] flex-shrink-0 snap-center"
@@ -156,10 +168,22 @@ export function ProductGrid() {
 
             {/* Version Tablette & Desktop : Grille classique 2 à 3 colonnes */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
+              {displayedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
+
+            {/* Lien direct et épuré vers le catalogue complet */}
+            {!isDedicatedPage && (
+              <div className="mt-10 sm:mt-12 text-center flex items-center justify-center">
+                <a
+                  href="/catalogue"
+                  className="text-base font-semibold text-brand-blue underline underline-offset-4 decoration-brand-gold decoration-2 hover:text-brand-gold transition-colors cursor-pointer"
+                >
+                  Voir tout le catalogue
+                </a>
+              </div>
+            )}
           </>
         ) : (
           /* État aucun résultat trouvé */
