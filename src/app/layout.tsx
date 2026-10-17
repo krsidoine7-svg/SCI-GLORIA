@@ -45,6 +45,13 @@ export const metadata: Metadata = {
     description:
       "Magasin, entrepôt et unité industrielle de fabrication de briques à Marcory.",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
