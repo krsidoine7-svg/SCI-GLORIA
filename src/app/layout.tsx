@@ -6,7 +6,6 @@ import { FavoritesProvider } from "@/context/FavoritesContext";
 import { FavoritesDrawer } from "@/components/FavoritesDrawer";
 import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
-import { PageLoader } from "@/components/PageLoader";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -45,13 +44,6 @@ export const metadata: Metadata = {
     description:
       "Magasin, entrepôt et unité industrielle de fabrication de briques à Marcory.",
   },
-  icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
-  },
 };
 
 export default function RootLayout({
@@ -65,9 +57,6 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="font-sans bg-white text-brand-blue min-h-screen antialiased flex flex-col w-full max-w-full">
-        {/* Page / Écran de chargement immersif à l'arrivée sur le site */}
-        <PageLoader />
-
         <FavoritesProvider>
           <CartProvider>
             {children}
