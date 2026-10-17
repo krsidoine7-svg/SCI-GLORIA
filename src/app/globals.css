@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-poppins);
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  color: #0B192C;
+  background-color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: clip;
+  position: relative;
+  width: 100%;
+}
+
+/* Stacking Sections CSS pur */
+.stacking-section {
+  position: sticky;
+  top: 96px;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+/* Barre de défilement discrète */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Animations de la Mascotte Lion Bâtisseur SCI GLORIA */
+@keyframes lion-cycle {
+  0%, 65%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  70% {
+    transform: translateY(-8px) scale(1.06);
+  }
+  75% {
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    transform: translateY(-4px) scale(1.03);
+  }
+  85% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes paw-wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20%, 60% {
+    transform: rotate(-18deg);
+  }
+  40%, 80% {
+    transform: rotate(12deg);
+  }
+}
+
+.animate-lion-cycle {
+  animation: lion-cycle 7s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+.animate-paw-wave {
+  transform-origin: 75% 70%;
+  animation: paw-wave 1.6s ease-in-out infinite;
+}
+
+/* Rugissement du Lion (Roar Vibration) */
+@keyframes roar-shake {
+  0%, 100% {
+    transform: scale(1.15) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.22) rotate(-4deg);
+  }
+  40% {
+    transform: scale(1.24) rotate(4deg);
+  }
+  60% {
+    transform: scale(1.2) rotate(-2deg);
+  }
+  80% {
+    transform: scale(1.22) rotate(2deg);
+  }
+}
+
+.animate-roar-shake {
+  animation: roar-shake 0.4s ease-in-out infinite;
+}
+
+@keyframes roar-wave-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+.animate-roar-ring {
+  animation: roar-wave-ring 0.9s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Animations d'Onde & Vague de Gauche à Droite (Hero SCI GLORIA) */
+@keyframes wave-draw {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes wave-shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-wave-line {
+  stroke-dasharray: 300;
+  animation: wave-draw 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.text-wave-gold {
+  background: linear-gradient(
+    90deg,
+    #FFFFFF 0%,
+    #FFFFFF 40%,
+    #FDE68A 50%,
+    #F59E0B 55%,
+    #FFFFFF 65%,
+    #FFFFFF 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave-shimmer-sweep 4.5s ease-in-out infinite;
+}
+
+

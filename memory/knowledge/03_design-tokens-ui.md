@@ -20,3 +20,8 @@
 * Les 3 cartes de services s'empilent au défilement façon Apple/Stripe.
 * Implémentation : `position: sticky` natif CSS, offsets calculés, ombres progressives `shadow-2xl`.
 * Zéro bibliothèque JavaScript lourde : 60 FPS garantis sur mobile.
+
+## 4. Mascotte Officielle : Le Lion Bâtisseur
+* **Personnage :** Lion noble et chaleureux avec casque de chantier doré (`#F59E0B`).
+* **Animations :** Cycle vivant de 7s (sautillement doux, léger zoom, et coucou de la patte 👋 en rotation).
+* **Rôle :** Humaniser l'accueil, capter le regard sans agresser et inciter à l'échange WhatsApp direct.

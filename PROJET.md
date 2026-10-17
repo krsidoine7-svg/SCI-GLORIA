@@ -103,36 +103,50 @@ graph TD
 
 ## 6. Roadmap MVP et Séquençage des Tâches
 
-### Séquençage Opérationnel du MVP 1 (Vitrine Vendeuse, Dynamique & WhatsApp)
-Chaque tâche dure entre 15 et 30 minutes, a un objectif précis et se valide individuellement :
+### Séquençage Opérationnel du MVP 1 (Vitrine Vendeuse, Dynamique & WhatsApp) — 100% VALIDÉ
+Toutes les micro-tâches ont été réalisées, testées et validées individuellement :
 
-1. **`MVP1-T01` : Initialisation du Socle Technique & Design Tokens**  
-   *Objectif :* Projet Next.js propre, Tailwind CSS, configuration Poppins et palette (Bleu Nuit, Blanc, Gris, Jaune or, Vert WhatsApp).
-2. **`MVP1-T02` : Données Structurées des 3 Services & Catalogue BTP Initial**  
-   *Objectif :* Typage TypeScript et fichier de données représentatif (Briques, Matériaux/Finitions, Terrains/Immobilier avec spécifications techniques).
-3. **`MVP1-T03` : Barre de Navigation, Footer & Bouton Flottant WhatsApp**  
-   *Objectif :* Header responsive avec logo SCI GLORIA, accès aux 3 univers, coordonnées Marcory et bouton WhatsApp persistant.
-4. **`MVP1-T04` : Section Héro Haute Conversion & Réassurance Marcory**  
-   *Objectif :* En-tête percutant, proposition de valeur pour Abidjan et compteurs de réassurance.
-5. **`MVP1-T05` : Stacking Sections des 3 Univers de Services (Effet Sticky Scroll)**  
-   *Objectif :* Les 3 grands services qui s'empilent au défilement avec animations fluides CSS sans ralentir le mobile.
-6. **`MVP1-T06` : Grille Produits Phares & Moteur des 3 Régimes de Prix**  
-   *Objectif :* Cartes articles avec prix Fixe, Sur Demande ou Devis, et bouton direct WhatsApp pré-rempli.
-7. **`MVP1-T07` : Fiche Technique Détaillée BTP & Bouton Copie de Lien**  
-   *Objectif :* Vue détaillée avec caractéristiques/résistance et lien instantanément copiable pour les agents WhatsApp.
-8. **`MVP1-T08` : Pages Institutionnelles & Contact Marcory (Plan, Horaires)**  
-   *Objectif :* Page À Propos (entrepôt) et Page Contact avec plan d'accès Marcory en bas du pont.
-9. **`MVP1-T09` : SEO Local Abidjan & Sécurité Transverse**  
-   *Objectif :* Balisage Schema.org, OpenGraph WhatsApp, `sitemap.xml`, `robots.txt`, `llm.txt` et mentions légales.
-10. **`MVP1-T10` : Recette QA Mobile, Performance & Validation Lancement**  
-    *Objectif :* Vérification du parcours de commande WhatsApp sur mobile, vitesse de chargement et contrastes WCAG AA.
+1. **`MVP1-T01` : Initialisation du Socle Technique & Design Tokens** — **VALIDÉ** (Next.js 15, React 19, Tailwind, Poppins, Tokens).
+2. **`MVP1-T02` : Données Structurées des 3 Services & Catalogue BTP Initial** — **VALIDÉ** (TypeScript strict, 8 produits, moteur WhatsApp).
+3. **`MVP1-T03` : Barre de Navigation, Footer & Bouton Flottant WhatsApp** — **VALIDÉ** (Menu sticky, footer 4 colonnes, widget officiel).
+4. **`MVP1-T04` : Section Héro Haute Conversion & Réassurance Marcory** — **VALIDÉ** (Titre éditorial, 4 compteurs animés natifs).
+5. **`MVP1-T05` : Stacking Sections des 3 Univers de Services (Effet Sticky Scroll)** — **VALIDÉ** (Empilement CSS pur 60 FPS, CTA dédiés).
+6. **`MVP1-T06` : Grille Produits Phares & Moteur des 3 Régimes de Prix** — **VALIDÉ** (Filtres réactifs, prix fixe/demande/devis, stock).
+7. **`MVP1-T07` : Fiche Technique Détaillée BTP & Bouton Copie de Lien** — **VALIDÉ** (Pages `/produit/[slug]`, specs, bouton 1 clic).
+8. **`MVP1-T08` : Pages Institutionnelles & Contact Marcory (Plan, Horaires)** — **VALIDÉ** (`/a-propos`, `/contact`, Maps, formulaire WhatsApp).
+9. **`MVP1-T09` : SEO Local Abidjan & Sécurité Transverse** — **VALIDÉ** (Schema.org JSON-LD, sitemap.xml, robots.txt, llm.txt, mentions légales).
+10. **`MVP1-T10` : Recette QA Mobile, Performance & Validation Lancement** — **TERMINÉE & PRÊTE** (Build production 0 erreur, 17 pages SSG, First Load JS ~103 kB, contrastes WCAG AA).
+
+---
+
+---
+
+### MVP 2 : Gestion Catalogue & Devis Multi-produits
+1. **`MVP2-T01` : Panier de Devis Groupé avec Quantités (`M05`)** — **TERMINÉ & TESTABLE** :
+   - Réglage des quantités par article (`-`, `+`, ou saisie directe du nombre).
+   - Raccourcis gros volumes pour les briques (500, 1 000, 2 000, 5 000 unités).
+   - Calcul automatique du sous-total par ligne et du total global estimé en FCFA.
+   - Message de devis officiel complet envoyé en 1 clic sur WhatsApp Business.
+2. **`MVP2-T04` : Barre de Recherche Instantanée dans le Catalogue (`M04-B`)** — **TERMINÉ & TESTABLE** :
+   - Recherche en temps réel par mot-clé (nom, sous-catégorie, caractéristiques techniques, cotes).
+   - Bouton d'effacement rapide et compteur de résultats trouvés.
+   - Mode Carrousel Horizontal Mobile (`M04-C`) : Défilement tactile de gauche à droite sur mobile pour parcourir les articles sans allonger la page verticalement, avec bouton "Voir plus" vers chaque fiche dédiée.
+3. **`MVP2-T05` : Simulateur & Calculateur de Matériaux BTP (`M10-B`)** — **TERMINÉ & TESTABLE** :
+   - Calculateur de briques (15x20x40 cm) au m² avec marge de casse et sacs de ciment estimés.
+   - Calculateur de carrelage 60x60 cm au m² avec calcul automatique en cartons (1.44 m²/carton) et marge de découpes.
+   - Bouton d'ajout direct du volume calculé au Panier de Devis (`Commande & Devis`).
+4. **`EXP-01` : Page de Chargement Immersive & Restauration Stacking Cards** — **TERMINÉ & TESTABLE** :
+   - Écran de chargement ultra-premium corporate (emblème architectural vectoriel or 24K, trame de précision BTP, jauge laser dorée 0-100%, fondu de sortie cinéma).
+   - Scroll Stacking Hybride : Cartes 01 & 02 empilées verticalement du bas vers le haut, et Carte 03 (Matériaux) glissant horizontalement de la droite vers la gauche au défilement pour se superposer au stack.
+   - Animation de vague de gauche à droite sur les textes du Hero (`HeroSection.tsx`) à la sortie du chargement (apparition mot par mot, vague SVG dorée fluide et brillance lumineuse).
+5. **`MVP2-T02` : Espace Administrateur Simple (`M09`)** — *À venir*.
+6. **`MVP2-T03` : Gestion Rapide des Stocks & Disponibilités (`M10`)** — *À venir*.
 
 ---
 
 ### Phases Suivantes (Prévues)
-* **MVP 2 : Gestion Catalogue & Devis Multi-produits** (`M05` Panier devis groupé, `M09` Espace Admin catalogue, `M10` Gestion de stock & alertes).
 * **MVP 3 : Dashboards Multi-rôles & Statistiques** (`M11` Espace Agent & suivi des paiements, `M12` Espace Client, `M13` Statistiques).
-* **MVP 4 : Évolutions Avancées** (Carte interactive des lotissements, automatisations).
+* **MVP 4 : Évolutions Avancées** (Carte interactive des lotissements, calculateur de matériaux BTP).
 
 ---
 

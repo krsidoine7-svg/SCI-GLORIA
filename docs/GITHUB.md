@@ -106,22 +106,16 @@ gitGraph
 
 ## 5. Connexion à GitHub & Premier Envoi (Push)
 
-Une fois le dépôt créé sur votre compte GitHub (ex: `https://github.com/votre-compte/sci-gloria.git`) :
+Le dépôt distant officiel de SCI GLORIA est configuré sur :  
+🔗 **`https://github.com/krsidoine7-svg/SCI-GLORIA.git`**
 
 ```bash
-# 1. Lier votre dossier local au dépôt distant GitHub
-git remote add origin https://github.com/votre-compte/sci-gloria.git
-
-# 2. Vérifier la liaison
+# 1. Le lien remote origin est déjà configuré :
 git remote -v
+# origin  https://github.com/krsidoine7-svg/SCI-GLORIA.git (fetch)
+# origin  https://github.com/krsidoine7-svg/SCI-GLORIA.git (push)
 
-# 3. Ajouter tous les fichiers de documentation préparés
-git add .
-
-# 4. Créer le premier commit propre
-git commit -m "docs: Initialisation de la documentation officielle SCI GLORIA (PRD, TDD, Design System, Roadmap)"
-
-# 5. Pousser sur GitHub
+# 2. Pour pousser vos commits vers GitHub depuis votre terminal :
 git push -u origin main
 ```
 
