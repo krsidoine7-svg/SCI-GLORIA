@@ -16,17 +16,10 @@ export function PageLoader() {
       return;
     }
 
-    try {
-      if (sessionStorage.getItem("scigloria_seen_loader")) {
-        setIsDone(true);
-        return;
-      }
-    } catch {
-      // ignore
-    }
-
-    // Première visite sur la page d'accueil : on affiche l'animation élégante
+    // Affichage fluide de l'animation d'accueil à chaque chargement
     setIsDone(false);
+    setProgress(0);
+    setIsFading(false);
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -50,11 +43,6 @@ export function PageLoader() {
 
       const timerDone = setTimeout(() => {
         setIsDone(true);
-        try {
-          sessionStorage.setItem("scigloria_seen_loader", "true");
-        } catch {
-          // ignore
-        }
       }, 650);
 
       return () => {

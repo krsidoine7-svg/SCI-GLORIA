@@ -6,6 +6,7 @@ import { FavoritesProvider } from "@/context/FavoritesContext";
 import { FavoritesDrawer } from "@/components/FavoritesDrawer";
 import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
+import { PageLoader } from "@/components/PageLoader";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -57,6 +58,9 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="font-sans bg-white text-brand-blue min-h-screen antialiased flex flex-col w-full max-w-full">
+        {/* Écran d'accueil immersif SCI GLORIA */}
+        <PageLoader />
+
         <FavoritesProvider>
           <CartProvider>
             {children}
